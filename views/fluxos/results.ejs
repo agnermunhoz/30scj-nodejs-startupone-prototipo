@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" />
+    <title>ProtótipoAPI</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img class="mr-2" src="/images/logo.png" />
+                <strong>ProtótipoAPI</strong>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <div class="card">
+            <div class="card-header">
+                <%= fluxo.nome %>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <%= fluxo.descricao %>
+                </p>
+            </div>
+        </div>
+        <br>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Coleta</th>
+                        <% fluxo.itens.forEach(function(item, index) { %>
+                            <th scope="col"><%= item.descricao %></th>
+                        <% }) %>    
+                    </tr>
+                </thead>
+                <tbody>
+                    <% dados.forEach(function(dado, index) { %>
+                        <tr>
+                            <td><%= dado._id %></td>
+                            <% dado.itens.forEach(function(item, index) { %>
+                                <td>
+                                    <%= item %>
+                                </td>
+                            <% }) %>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">FIAP - 30SCJ</span>
+        </div>
+    </footer>
+
+    <script src="/javascripts/jquery-3.2.1.slim.min.js"></script>
+    <script src="/javascripts/popper.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+</body>
+
+</html>

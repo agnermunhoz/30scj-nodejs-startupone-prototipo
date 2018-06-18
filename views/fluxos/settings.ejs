@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" />
+    <title>ProtótipoAPI</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img class="mr-2" src="/images/logo.png" />
+                <strong>ProtótipoAPI</strong>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+
+        <div class="modal fade" id="novoItemModalCenter" tabindex="-1" role="dialog" aria-labelledby="novoItemModalCenterTitle" aria-hidden="true">
+            <form action="/novoitem?id=<%= fluxo._id %>" method="POST" class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Novo Item</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group  col-md-6">
+                                <label for="inputNome">Nome</label>
+                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="item[nome]" autofocus>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputNome">Descrição</label>
+                                <input type="text" class="form-control" id="inputDescricao" placeholder="Descrição" name="item[descricao]">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Tipo</label>
+                                <select id="inputState" class="form-control" name="item[tipo]">
+                                    <option value="text" selected>Texto</option>
+                                    <option value="number">Número</option>
+                                    <option value="date">Data</option>
+                                    <option value="image">Imagem</option>
+                                    <option value="location">Localização</option>
+                                    <option value="file">Arquivo</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputState">Método</label>
+                                <select id="inputState" class="form-control" name="item[metodo]">
+                                    <option value="input" selected>Digitação</option>
+                                    <option value="environment">Dispositivo</option>
+                                    <option value="upload">Upload</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">
+                <%= fluxo.nome %>
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <%= fluxo.descricao %>
+                </p>
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#novoItemModalCenter">Novo Item</a>
+            </div>
+        </div>
+        <br>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Método</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% itens.forEach(function(item, index) { %>
+                        <tr>
+                            <td>
+                                <%= item.nome %>
+                            </td>
+                            <td>
+                                <%= item.descricao %>
+                            </td>
+                            <td>
+                                <%= item.tipo %>
+                            </td>
+                            <td>
+                                <%= item.metodo %>
+                            </td>
+                            <td>
+                                <a href="/deleteitem?fluxo=<%= fluxo._id %>&item=<%= item._id %>">
+                                    <img alt="Excluir" src="/images/delete.png">
+                                </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">FIAP - 30SCJ</span>
+        </div>
+    </footer>
+
+    <script src="/javascripts/jquery-3.2.1.slim.min.js"></script>
+    <script src="/javascripts/popper.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+</body>
+
+</html>

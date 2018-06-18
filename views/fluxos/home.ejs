@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/images/favicon.ico" />
+    <title>ProtótipoAPI</title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+
+            <a href="#" class="navbar-brand d-flex align-items-center">
+                <img class="mr-2" src="/images/logo.png" />
+                <strong>ProtótipoAPI</strong>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="container">
+        <div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#novoFluxoModalCenter">
+                Novo Fluxo
+            </button>
+        </div>
+        <br>
+        <!-- Modal -->
+        <div class="modal fade" id="novoFluxoModalCenter" tabindex="-1" role="dialog" aria-labelledby="novoFluxoModalCenterTitle"
+            aria-hidden="true">
+            <form action="/novo" method="POST" class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Novo Fluxo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group  col-md-6">
+                                <label for="inputNome">Nome</label>
+                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="fluxo[nome]" autofocus>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputNome">Descrição</label>
+                                <input type="text" class="form-control" id="inputDescricao" placeholder="Descrição" name="fluxo[descricao]">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Fluxo</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% fluxos.forEach(function(fluxo, index) { %>
+                        <tr>
+                            <td>
+                                <%= fluxo._id %>
+                            </td>
+                            <td>
+                                <%= fluxo.nome %>
+                            </td>
+                            <td>
+                                <%= fluxo.descricao %>
+                            </td>
+                            <td>
+                                <a href="/settings?id=<%= fluxo._id %>">
+                                    <img alt="Configurar" src="/images/settings.png">
+                                </a>&nbsp;
+                                <a href="/results?id=<%= fluxo._id %>">
+                                    <img alt="Resultados" src="/images/report.png">
+                                </a>&nbsp;
+                                <a href="/delete?id=<%= fluxo._id %>">
+                                    <img alt="Excluir" src="/images/delete.png">
+                                </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">FIAP - 30SCJ</span>
+        </div>
+    </footer>
+
+    <script src="/javascripts/jquery-3.2.1.slim.min.js"></script>
+    <script src="/javascripts/popper.min.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+</body>
+
+</html>
