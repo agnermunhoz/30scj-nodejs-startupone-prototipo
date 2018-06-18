@@ -10,6 +10,9 @@ var error = require('./middlewares/error');
 app = express();
 
 var mongoose = require('mongoose');
+
+const PORT = process.env.PORT || 5000
+
 //global.db = mongoose.connect('mongodb://AJ0263498B:27017/protopitoAPI');
 global.db = mongoose.connect('mongodb://user:userpass1@ds163330.mlab.com:63330/prototipoapi');
 mongoose.connection.on('connected', function () {
@@ -41,6 +44,7 @@ load('models')
 app.use(error.notFound);
 app.use(error.serverError);
 
-app.listen(8080, function () {
+app.listen(PORT, function () {
+  console.log(`Listening on ${ PORT }`)
   console.log("Aplicação no ar.");
 });
