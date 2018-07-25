@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Way</title>
+
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/stylesheets/plugins/dataTables/datatables.min.css" rel="stylesheet">
+
+    <link href="/stylesheets/animate.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+
+    <link href="/stylesheets/prototipo.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <img alt="image" class="rounded-circle" src="/images/profile_small.jpg" />
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="block m-t-xs font-bold">David Williams</span>
+                                <span class="text-muted text-xs block">Admin
+                                    <b class="caret"></b>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li>
+                                    <a class="dropdown-item" href="profile.html">Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="contacts.html">Contacts</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="mailbox.html">Mailbox</a>
+                                </li>
+                                <li class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="login.html">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href="index.html">
+                            <i class="fa fa-th-large"></i>
+                            <span class="nav-label">Fluxos</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="home">Dashboard</a>
+                            </li>
+                            <li data-toggle="modal" data-target="#novoFluxoModalCenter">
+                                <a href="#">Criar Fluxo</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                        <!-- <form role="search" class="navbar-form-custom" action="search_results.html">
+                            <div class="form-group">
+                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                            </div>
+                        </form> -->
+                    </div>
+            
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message cursor-context-menu">Bem-vindo ao Prot&oacute;tipo API</span>
+                        </li>
+                        <li>
+                            <a href="login.html">
+                                <i class="fa fa-sign-out"></i> Log out
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+            <div class="wrapper wrapper-content animated fadeIn">
+                <div class="footer">
+                    <div class="float-right">
+                        10GB of
+                        <strong>250GB</strong> Free.
+                    </div>
+                    <div>
+                        <strong>Copyright</strong> Example Company &copy; 2014-2018
+                    </div>
+                </div>
+            </div>
+
+     
+        <!-- <div class="card">
+                <div class="card-header">
+                    <%= fluxo.nome %>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <%= fluxo.descricao %>
+                    </p>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#novoItemModalCenter">Novo Item</a>
+                </div>
+        </div> -->
+
+        <div >
+            <h1> <%= fluxo.nome %></h1>
+            <h5><%= fluxo.descricao %></h5>
+        </div>    
+        
+        <div class="row">
+            <div class="col-md-12 offset-md-10">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#novoItemModalCenter">Novo Item</a>
+            </div>
+        </div>
+        <br>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Método</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% itens.forEach(function(item, index) { %>
+                        <tr>
+                            <td>
+                                <%= item.nome %>
+                            </td>
+                            <td>
+                                <%= item.descricao %>
+                            </td>
+                            <td>
+                                <%= item.tipo %>
+                            </td>
+                            <td>
+                                <%= item.metodo %>
+                            </td>
+                            <td>
+                                <a href="/deleteitem?fluxo=<%= fluxo._id %>&item=<%= item._id %>">
+                                    <i class="fa fa-trash-o fa-tamanho-2 hover-vermelho" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="" data-original-title="Deletar"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+
+
+           <!-- Modal novo fluxo-->
+           <div class="modal fade" id="novoFluxoModalCenter" tabindex="-1" role="dialog" aria-labelledby="novoFluxoModalCenterTitle"
+           aria-hidden="true">
+           <form action="/novo" method="POST" class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h3 class="modal-title" id="exampleModalLongTitle">Novo Fluxo</h3>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                       </button>
+                   </div>
+                   <div class="modal-body">
+                       <div class="form-row">
+                           <div class="form-group col-md-12">
+                               <label for="inputNome">Nome</label>
+                               <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="fluxo[nome]" autofocus>
+                           </div>
+                       </div>
+                       <div class="form-row">
+                           <div class="form-group col-md-12">
+                               <label for="inputNome">Descrição</label>
+                               <input type="text" class="form-control" id="inputDescricao" placeholder="Descrição" name="fluxo[descricao]">
+                           </div>
+                       </div>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                       <button type="submit" class="btn btn-primary">Salvar</button>
+                   </div>
+               </div>
+           </form>
+       </div>
+
+
+       <div class="modal fade" id="novoItemModalCenter" tabindex="-1" role="dialog" aria-labelledby="novoItemModalCenterTitle" aria-hidden="true">
+           <form action="/novoitem?id=<%= fluxo._id %>" method="POST" class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+                   <div class="modal-header">
+                       <h3 class="modal-title" id="exampleModalLongTitle">Novo Item</h3>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                       </button>
+                   </div>
+                   <div class="modal-body">
+                       <div class="form-row">
+                           <div class="form-group  col-md-12">
+                               <label for="inputNome">Nome</label>
+                               <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="item[nome]" autofocus>
+                           </div>
+                       </div>
+                       <div class="form-row">
+                           <div class="form-group col-md-12">
+                               <label for="inputNome">Descrição</label>
+                               <input type="text" class="form-control" id="inputDescricao" placeholder="Descrição" name="item[descricao]">
+                           </div>
+                       </div>
+                       <div class="form-row">
+                           <div class="form-group col-md-6">
+                               <label for="inputState">Tipo</label>
+                               <select id="inputState" class="form-control" name="item[tipo]">
+                                   <option value="text" selected>Texto</option>
+                                   <option value="number">Número</option>
+                                   <option value="date">Data</option>
+                                   <option value="image">Imagem</option>
+                                   <option value="location">Localização</option>
+                                   <option value="file">Arquivo</option>
+                               </select>
+                           </div>
+                           <div class="form-group col-md-6">
+                               <label for="inputState">Método</label>
+                               <select id="inputState" class="form-control" name="item[metodo]">
+                                   <option value="input" selected>Digitação</option>
+                                   <option value="environment">Dispositivo</option>
+                                   <option value="upload">Upload</option>
+                               </select>
+                           </div>
+                       </div>
+                   </div>
+
+                   <div class="modal-footer">
+                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                       <button type="submit" class="btn btn-primary">Salvar</button>
+                   </div>
+               </div>
+           </form>
+       </div>
+           
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/popper.min.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/javascripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="/javascripts/plugins/flot/jquery.flot.js"></script>
+    <script src="/javascripts/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="/javascripts/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="/javascripts/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="/javascripts/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="/javascripts/plugins/flot/jquery.flot.symbol.js"></script>
+    <script src="/javascripts/plugins/flot/jquery.flot.time.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/javascripts/inspinia.js"></script>
+    <script src="/javascripts/plugins/pace/pace.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="/javascripts/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <script src="/javascripts/plugins/dataTables/datatables.min.js"></script>
+    <script src="/javascripts/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('.data-table').DataTable();
+
+            $('[data-toggle="tooltip"]').tooltip()
+
+            var sparklineCharts = function () {
+                $("#sparkline1").sparkline([34, 43, 43, 35, 44, 32, 44, 52], {
+                    type: 'line',
+                    width: '100%',
+                    height: '50',
+                    lineColor: '#1ab394',
+                    fillColor: "transparent"
+                });
+
+                $("#sparkline2").sparkline([32, 11, 25, 37, 41, 32, 34, 42], {
+                    type: 'line',
+                    width: '100%',
+                    height: '50',
+                    lineColor: '#1ab394',
+                    fillColor: "transparent"
+                });
+
+                $("#sparkline3").sparkline([34, 22, 24, 41, 10, 18, 16, 8], {
+                    type: 'line',
+                    width: '100%',
+                    height: '50',
+                    lineColor: '#1C84C6',
+                    fillColor: "transparent"
+                });
+            };
+
+            var sparkResize;
+
+            $(window).resize(function (e) {
+                clearTimeout(sparkResize);
+                sparkResize = setTimeout(sparklineCharts, 500);
+            });
+
+            sparklineCharts();
+
+
+
+
+            var data1 = [
+                [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 20], [11, 10], [12, 13], [13, 4], [14, 7], [15, 8], [16, 12]
+            ];
+            var data2 = [
+                [0, 0], [1, 2], [2, 7], [3, 4], [4, 11], [5, 4], [6, 2], [7, 5], [8, 11], [9, 5], [10, 4], [11, 1], [12, 5], [13, 2], [14, 5], [15, 2], [16, 0]
+            ];
+            $("#flot-dashboard5-chart").length && $.plot($("#flot-dashboard5-chart"), [
+                data1, data2
+            ],
+                {
+                    series: {
+                        lines: {
+                            show: false,
+                            fill: true
+                        },
+                        splines: {
+                            show: true,
+                            tension: 0.4,
+                            lineWidth: 1,
+                            fill: 0.4
+                        },
+                        points: {
+                            radius: 0,
+                            show: true
+                        },
+                        shadowSize: 2
+                    },
+                    grid: {
+                        hoverable: true,
+                        clickable: true,
+
+                        borderWidth: 2,
+                        color: 'transparent'
+                    },
+                    colors: ["#1ab394", "#1C84C6"],
+                    xaxis: {
+                    },
+                    yaxis: {
+                    },
+                    tooltip: false
+                }
+            );
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+.text-center{
+    text-align: center;
+}
+
+.hover-vermelho:hover{
+    color: red;
+}
+
+.cursor-context-menu {
+    cursor: context-menu;
+}
+.fa-tamanho-1{
+    font-size: 22px;
+}
+
+.fa-tamanho-2{
+    font-size: 32px;
+}
+
