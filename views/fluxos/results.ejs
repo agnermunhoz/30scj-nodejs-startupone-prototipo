@@ -1,3 +1,10 @@
+<!--
+*
+*  INSPINIA - Responsive Admin Theme
+*  version 2.8
+*
+-->
+
 <!DOCTYPE html>
 <html>
 
@@ -5,8 +12,9 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Way</title>
+    <title>INSPINIA | Dashboard</title>
 
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
     <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -17,6 +25,7 @@
     <link href="/stylesheets/style.css" rel="stylesheet">
 
     <link href="/stylesheets/prototipo.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -50,7 +59,7 @@
                             </ul>
                         </div>
                         <div class="logo-element">
-                            IN+
+                            Way
                         </div>
                     </li>
                     <li class="active">
@@ -60,7 +69,7 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li>
+                            <li class="active">
                                 <a href="home">Dashboard</a>
                             </li>
                             <li data-toggle="modal" data-target="#novoFluxoModalCenter">
@@ -73,20 +82,19 @@
             </div>
         </nav>
 
-        <div id="page-wrapper" class="gray-bg">
+        <div id="page-wrapper" class="gray-bg dashbard-1">
             <div class="row border-bottom">
-                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
                         <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
                             <i class="fa fa-bars"></i>
                         </a>
-                        <!-- <form role="search" class="navbar-form-custom" action="search_results.html">
+                          <!-- <form role="search" class="navbar-form-custom" action="search_results.html">
                             <div class="form-group">
                                 <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
                             </div>
                         </form> -->
                     </div>
-            
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
                             <span class="m-r-sm text-muted welcome-message cursor-context-menu">Bem-vindo ao Prot&oacute;tipo API</span>
@@ -100,268 +108,657 @@
 
                 </nav>
             </div>
+                <div class="row  border-bottom white-bg dashboard-header">
 
-            <div class="wrapper wrapper-content animated fadeIn">
-                <div class="footer">
-                    <div class="float-right">
-                        10GB of
-                        <strong>250GB</strong> Free.
+                    <div class="col-md-3">
+                        <h2><%= fluxo.nome %></h2>
+                        <small> <%= fluxo.descricao %> </small>
+                        <ul class="list-group clear-list m-t">
+                            <li class="list-group-item fist-item">
+                                <span class="float-right">
+                                   2.2 Gb
+                                </span>
+                                <span class="label label-success">1</span> John
+                            </li>
+                            <li class="list-group-item">
+                                <span class="float-right">
+                                    2 Gb
+                                </span>
+                                <span class="label label-info">2</span> Mary
+                            </li>
+                            <li class="list-group-item">
+                                <span class="float-right">
+                                    1.7 Gb
+                                </span>
+                                <span class="label label-primary">3</span> David
+                            </li>
+                            <li class="list-group-item">
+                                <span class="float-right">
+                                   1.3 Gb
+                                </span>
+                                <span class="label label-default">4</span> Sophie
+                            </li>
+                            <li class="list-group-item">
+                                <span class="float-right">
+                                    900 Mb
+                                </span>
+                                <span class="label label-primary">5</span> Alisson
+                            </li>
+                        </ul>
                     </div>
-                    <div>
-                        <strong>Copyright</strong> Example Company &copy; 2014-2018
+                    <div class="col-md-6">
+                        <div class="flot-chart dashboard-chart">
+                            <div class="flot-chart-content" id="flot-dashboard-chart"></div>
+                        </div>
+                        <div class="row text-left">
+                            <div class="col">
+                                <div class=" m-l-md">
+                                <span class="h5 font-bold m-t block">30 K</span>
+                                <small class="text-muted m-b block">Visitas em Outubro</small>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <span class="h5 font-bold m-t block">4 K</span>
+                                <small class="text-muted m-b block">Visitas em Fevereiro</small>
+                            </div>
+                            <div class="col">
+                                <span class="h5 font-bold m-t block">236 K</span>
+                                <small class="text-muted m-b block">Total por ano</small>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="statistic-box">
+                        <h4 class="text-center">
+                            Uso do <%= fluxo.nome %> por plataforma
+                        </h4>
+                        <p >
+                           
+                        </p>
+                            <div class="row text-center">
+                                <div class="col-lg-12">
+                                    <canvas id="doughnutChart2" width="80" height="80" style="margin: 18px auto 0"></canvas>
+                                    <h5>Uso %</h5>
+                                </div>
+                            </div>
+                            <div class="m-t text-center">
+                                <small>App: 700 / Site: 200 / WS: 100</small>
+                            </div>
+
+                        </div>
+                    </div>
+
+            </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content">
+                    <div class="row">
+                        <br>
+                        <table class="table data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">Chave </th>
+                                        <% fluxo.itens.forEach(function(item, index) { %>
+                                            <th class="text-center" scope="col"><%= item.descricao %></th>
+                                        <% }) %>    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% dados.forEach(function(dado, index) { %>
+                                        <tr>
+                                            <td><%= dado._id %></td>
+                                            <% dado.itens.forEach(function(item, index) { %>
+                                                <td class="text-center">
+                                                    <%= item %>
+                                                </td>
+                                            <% }) %>
+                                        </tr>
+                                        <% }) %>
+                                </tbody>
+                        </table>
+                    </div>
+                 </div>
+            </div>
+        </div>    
+            <div class="footer">
+                <div class="float-right">
+                    10GB of <strong>250GB</strong> Free.
+                </div>
+                <div>
+                    <strong>Data Way</strong>  &copy; 2018
+                </div>
+            </div>
+        </div>
+ 
+        <div id="right-sidebar" class="animated">
+            <div class="sidebar-container">
+
+                <ul class="nav nav-tabs navs-3">
+                    <li>
+                        <a class="nav-link active" data-toggle="tab" href="#tab-1"> Notes </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" data-toggle="tab" href="#tab-2"> Projects </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" data-toggle="tab" href="#tab-3"> <i class="fa fa-gear"></i> </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+
+
+                    <div id="tab-1" class="tab-pane active">
+
+                        <div class="sidebar-title">
+                            <h3> <i class="fa fa-comments-o"></i> Latest Notes</h3>
+                            <small><i class="fa fa-tim"></i> You have 10 new message.</small>
+                        </div>
+
+                        <div>
+
+                            <div class="sidebar-message">
+                                <a href="#">
+                                    <div class="float-left text-center">
+                                        <img alt="image" class="rounded-circle message-avatar" src="img/a1.jpg">
+
+                                        <div class="m-t-xs">
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+
+                                        There are many variations of passages of Lorem Ipsum available.
+                                        <br>
+                                        <small class="text-muted">Today 4:21 pm</small>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidebar-message">
+                                <a href="#">
+                                    <div class="float-left text-center">
+                                        <img alt="image" class="rounded-circle message-avatar" src="img/a2.jpg">
+                                    </div>
+                                    <div class="media-body">
+                                        The point of using Lorem Ipsum is that it has a more-or-less normal.
+                                        <br>
+                                        <small class="text-muted">Yesterday 2:45 pm</small>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidebar-message">
+                                <a href="#">
+                                    <div class="float-left text-center">
+                                        <img alt="image" class="rounded-circle message-avatar" src="img/a3.jpg">
+
+                                        <div class="m-t-xs">
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        Mevolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                        <br>
+                                        <small class="text-muted">Yesterday 1:10 pm</small>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidebar-message">
+                                <a href="#">
+                                    <div class="float-left text-center">
+                                        <img alt="image" class="rounded-circle message-avatar" src="img/a4.jpg">
+                                    </div>
+
+                                    <div class="media-body">
+                                        Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the
+                                        <br>
+                                        <small class="text-muted">Monday 8:37 pm</small>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidebar-message">
+                                <a href="#">
+                                    <div class="float-left text-center">
+                                        <img alt="image" class="rounded-circle message-avatar" src="img/a8.jpg">
+                                    </div>
+                                    <div class="media-body">
+
+                                        All the Lorem Ipsum generators on the Internet tend to repeat.
+                                        <br>
+                                        <small class="text-muted">Today 4:21 pm</small>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidebar-message">
+                                <a href="#">
+                                    <div class="float-left text-center">
+                                        <img alt="image" class="rounded-circle message-avatar" src="img/a7.jpg">
+                                    </div>
+                                    <div class="media-body">
+                                        Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                                        <br>
+                                        <small class="text-muted">Yesterday 2:45 pm</small>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidebar-message">
+                                <a href="#">
+                                    <div class="float-left text-center">
+                                        <img alt="image" class="rounded-circle message-avatar" src="img/a3.jpg">
+
+                                        <div class="m-t-xs">
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                            <i class="fa fa-star text-warning"></i>
+                                        </div>
+                                    </div>
+                                    <div class="media-body">
+                                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below.
+                                        <br>
+                                        <small class="text-muted">Yesterday 1:10 pm</small>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="sidebar-message">
+                                <a href="#">
+                                    <div class="float-left text-center">
+                                        <img alt="image" class="rounded-circle message-avatar" src="img/a4.jpg">
+                                    </div>
+                                    <div class="media-body">
+                                        Uncover many web sites still in their infancy. Various versions have.
+                                        <br>
+                                        <small class="text-muted">Monday 8:37 pm</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="tab-2" class="tab-pane">
+
+                        <div class="sidebar-title">
+                            <h3> <i class="fa fa-cube"></i> Latest projects</h3>
+                            <small><i class="fa fa-tim"></i> You have 14 projects. 10 not completed.</small>
+                        </div>
+
+                        <ul class="sidebar-list">
+                            <li>
+                                <a href="#">
+                                    <div class="small float-right m-t-xs">9 hours ago</div>
+                                    <h4>Business valuation</h4>
+                                    It is a long established fact that a reader will be distracted.
+
+                                    <div class="small">Completion with: 22%</div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 22%;" class="progress-bar progress-bar-warning"></div>
+                                    </div>
+                                    <div class="small text-muted m-t-xs">Project end: 4:00 pm - 12.06.2014</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="small float-right m-t-xs">9 hours ago</div>
+                                    <h4>Contract with Company </h4>
+                                    Many desktop publishing packages and web page editors.
+
+                                    <div class="small">Completion with: 48%</div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 48%;" class="progress-bar"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="small float-right m-t-xs">9 hours ago</div>
+                                    <h4>Meeting</h4>
+                                    By the readable content of a page when looking at its layout.
+
+                                    <div class="small">Completion with: 14%</div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 14%;" class="progress-bar progress-bar-info"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-primary float-right">NEW</span>
+                                    <h4>The generated</h4>
+                                    There are many variations of passages of Lorem Ipsum available.
+                                    <div class="small">Completion with: 22%</div>
+                                    <div class="small text-muted m-t-xs">Project end: 4:00 pm - 12.06.2014</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="small float-right m-t-xs">9 hours ago</div>
+                                    <h4>Business valuation</h4>
+                                    It is a long established fact that a reader will be distracted.
+
+                                    <div class="small">Completion with: 22%</div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 22%;" class="progress-bar progress-bar-warning"></div>
+                                    </div>
+                                    <div class="small text-muted m-t-xs">Project end: 4:00 pm - 12.06.2014</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="small float-right m-t-xs">9 hours ago</div>
+                                    <h4>Contract with Company </h4>
+                                    Many desktop publishing packages and web page editors.
+
+                                    <div class="small">Completion with: 48%</div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 48%;" class="progress-bar"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="small float-right m-t-xs">9 hours ago</div>
+                                    <h4>Meeting</h4>
+                                    By the readable content of a page when looking at its layout.
+
+                                    <div class="small">Completion with: 14%</div>
+                                    <div class="progress progress-mini">
+                                        <div style="width: 14%;" class="progress-bar progress-bar-info"></div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="label label-primary float-right">NEW</span>
+                                    <h4>The generated</h4>
+                                    <!--<div class="small float-right m-t-xs">9 hours ago</div>-->
+                                    There are many variations of passages of Lorem Ipsum available.
+                                    <div class="small">Completion with: 22%</div>
+                                    <div class="small text-muted m-t-xs">Project end: 4:00 pm - 12.06.2014</div>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div id="tab-3" class="tab-pane">
+
+                        <div class="sidebar-title">
+                            <h3><i class="fa fa-gears"></i> Settings</h3>
+                            <small><i class="fa fa-tim"></i> You have 14 projects. 10 not completed.</small>
+                        </div>
+
+                        <div class="setings-item">
+                    <span>
+                        Show notifications
+                    </span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example">
+                                    <label class="onoffswitch-label" for="example">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setings-item">
+                    <span>
+                        Disable Chat
+                    </span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="collapsemenu" checked class="onoffswitch-checkbox" id="example2">
+                                    <label class="onoffswitch-label" for="example2">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setings-item">
+                    <span>
+                        Enable history
+                    </span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example3">
+                                    <label class="onoffswitch-label" for="example3">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setings-item">
+                    <span>
+                        Show charts
+                    </span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example4">
+                                    <label class="onoffswitch-label" for="example4">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setings-item">
+                    <span>
+                        Offline users
+                    </span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" checked name="collapsemenu" class="onoffswitch-checkbox" id="example5">
+                                    <label class="onoffswitch-label" for="example5">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setings-item">
+                    <span>
+                        Global search
+                    </span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" checked name="collapsemenu" class="onoffswitch-checkbox" id="example6">
+                                    <label class="onoffswitch-label" for="example6">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setings-item">
+                    <span>
+                        Update everyday
+                    </span>
+                            <div class="switch">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="example7">
+                                    <label class="onoffswitch-label" for="example7">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-content">
+                            <h4>Settings</h4>
+                            <div class="small">
+                                I belive that. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                And typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-
-     
-        <!-- <div class="card">
-                <div class="card-header">
-                    <%= fluxo.nome %>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        <%= fluxo.descricao %>
-                    </p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#novoItemModalCenter">Novo Item</a>
-                </div>
-        </div> -->
-
-        <div >
-            <h1> <%= fluxo.nome %></h1>
-            <h5><%= fluxo.descricao %></h5>
-        </div>    
-
-            <br>
-        <div>
-        <table class="table data-table">
-                <thead>
-                    <tr>
-                        <th class="text-center" scope="col">Chave </th>
-                        <% fluxo.itens.forEach(function(item, index) { %>
-                            <th class="text-center" scope="col"><%= item.descricao %></th>
-                        <% }) %>    
-                    </tr>
-                </thead>
-                <tbody>
-                    <% dados.forEach(function(dado, index) { %>
-                        <tr>
-                            <td><%= dado._id %></td>
-                            <% dado.itens.forEach(function(item, index) { %>
-                                <td class="text-center">
-                                    <%= item %>
-                                </td>
-                            <% }) %>
-                        </tr>
-                        <% }) %>
-                </tbody>
-            </table>
-
-
-           <!-- Modal novo fluxo-->
-           <div class="modal fade" id="novoFluxoModalCenter" tabindex="-1" role="dialog" aria-labelledby="novoFluxoModalCenterTitle"
-           aria-hidden="true">
-           <form action="/novo" method="POST" class="modal-dialog modal-dialog-centered" role="document">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <h3 class="modal-title" id="exampleModalLongTitle">Novo Fluxo</h3>
-                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                       </button>
-                   </div>
-                   <div class="modal-body">
-                       <div class="form-row">
-                           <div class="form-group col-md-12">
-                               <label for="inputNome">Nome</label>
-                               <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="fluxo[nome]" autofocus>
-                           </div>
-                       </div>
-                       <div class="form-row">
-                           <div class="form-group col-md-12">
-                               <label for="inputNome">Descrição</label>
-                               <input type="text" class="form-control" id="inputDescricao" placeholder="Descrição" name="fluxo[descricao]">
-                           </div>
-                       </div>
-                   </div>
-                   <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                       <button type="submit" class="btn btn-primary">Salvar</button>
-                   </div>
-               </div>
-           </form>
-       </div>
-
-
-       <div class="modal fade" id="novoItemModalCenter" tabindex="-1" role="dialog" aria-labelledby="novoItemModalCenterTitle" aria-hidden="true">
-           <form action="/novoitem?id=<%= fluxo._id %>" method="POST" class="modal-dialog modal-dialog-centered" role="document">
-               <div class="modal-content">
-                   <div class="modal-header">
-                       <h5 class="modal-title" id="exampleModalLongTitle">Novo Item</h5>
-                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                       </button>
-                   </div>
-                   <div class="modal-body">
-                       <div class="form-row">
-                           <div class="form-group  col-md-12">
-                               <label for="inputNome">Nome</label>
-                               <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="item[nome]" autofocus>
-                           </div>
-                       </div>
-                       <div class="form-row">
-                           <div class="form-group col-md-12">
-                               <label for="inputNome">Descrição</label>
-                               <input type="text" class="form-control" id="inputDescricao" placeholder="Descrição" name="item[descricao]">
-                           </div>
-                       </div>
-                       <div class="form-row">
-                           <div class="form-group col-md-6">
-                               <label for="inputState">Tipo</label>
-                               <select id="inputState" class="form-control" name="item[tipo]">
-                                   <option value="text" selected>Texto</option>
-                                   <option value="number">Número</option>
-                                   <option value="date">Data</option>
-                                   <option value="image">Imagem</option>
-                                   <option value="location">Localização</option>
-                                   <option value="file">Arquivo</option>
-                               </select>
-                           </div>
-                           <div class="form-group col-md-6">
-                               <label for="inputState">Método</label>
-                               <select id="inputState" class="form-control" name="item[metodo]">
-                                   <option value="input" selected>Digitação</option>
-                                   <option value="environment">Dispositivo</option>
-                                   <option value="upload">Upload</option>
-                               </select>
-                           </div>
-                       </div>
-                   </div>
-
-                   <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                       <button type="submit" class="btn btn-primary">Salvar</button>
-                   </div>
-               </div>
-           </form>
-       </div>
-           
+        </div>
     </div>
 
-    <!-- Mainly scripts -->
-    <script src="/javascripts/jquery-3.1.1.min.js"></script>
-    <script src="/javascripts/popper.min.js"></script>
-    <script src="/javascripts/bootstrap.js"></script>
-    <script src="/javascripts/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/javascripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+            <!-- Modal -->
+            <div class="modal fade" id="novoFluxoModalCenter" tabindex="-1" role="dialog" aria-labelledby="novoFluxoModalCenterTitle"
+            aria-hidden="true">
+            <form action="/novo" method="POST" class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle">Novo Fluxo</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group  col-md-12">
+                                <label for="inputNome">Nome</label>
+                                <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="fluxo[nome]" autofocus>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputNome">Descrição</label>
+                                <input type="text" class="form-control" id="inputDescricao" placeholder="Descrição" name="fluxo[descricao]">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-    <!-- Flot -->
-    <script src="/javascripts/plugins/flot/jquery.flot.js"></script>
-    <script src="/javascripts/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/javascripts/plugins/flot/jquery.flot.spline.js"></script>
-    <script src="/javascripts/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="/javascripts/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="/javascripts/plugins/flot/jquery.flot.symbol.js"></script>
-    <script src="/javascripts/plugins/flot/jquery.flot.time.js"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script src="/javascripts/inspinia.js"></script>
-    <script src="/javascripts/plugins/pace/pace.min.js"></script>
-
-    <!-- Sparkline -->
-    <script src="/javascripts/plugins/sparkline/jquery.sparkline.min.js"></script>
-
-    <script src="/javascripts/plugins/dataTables/datatables.min.js"></script>
-    <script src="/javascripts/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+     <!-- Mainly scripts -->
+     <script src="/javascripts/jquery-3.1.1.min.js"></script>
+     <script src="/javascripts/popper.min.js"></script>
+     <script src="/javascripts/bootstrap.js"></script>
+     <script src="/javascripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+     <script src="/javascripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+ 
+     <!-- Flot -->
+     <script src="/javascripts/plugins/flot/jquery.flot.js"></script>
+     <script src="/javascripts/plugins/flot/jquery.flot.tooltip.min.js"></script>
+     <script src="/javascripts/plugins/flot/jquery.flot.spline.js"></script>
+     <script src="/javascripts/plugins/flot/jquery.flot.resize.js"></script>
+     <script src="/javascripts/plugins/flot/jquery.flot.pie.js"></script>
+     <script src="/javascripts/plugins/flot/jquery.flot.symbol.js"></script>
+     <script src="/javascripts/plugins/flot/jquery.flot.time.js"></script>
+ 
+     <!-- Custom and plugin javascript -->
+     <script src="/javascripts/inspinia.js"></script>
+     <script src="/javascripts/plugins/pace/pace.min.js"></script>
+ 
+     <!-- Chart JS -->
+     <script src="/javascripts/plugins/chartJs/Chart.min.js"></script>
+ 
+     <!-- Sparkline -->
+     <script src="/javascripts/plugins/sparkline/jquery.sparkline.min.js"></script>
+ 
+     <script src="/javascripts/plugins/dataTables/datatables.min.js"></script>
+     <script src="/javascripts/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
 
 
     <script>
-        $(document).ready(function () {
-            $('.data-table').DataTable();
+        $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
 
-            $('[data-toggle="tooltip"]').tooltip()
-
-            var sparklineCharts = function () {
-                $("#sparkline1").sparkline([34, 43, 43, 35, 44, 32, 44, 52], {
-                    type: 'line',
-                    width: '100%',
-                    height: '50',
-                    lineColor: '#1ab394',
-                    fillColor: "transparent"
-                });
-
-                $("#sparkline2").sparkline([32, 11, 25, 37, 41, 32, 34, 42], {
-                    type: 'line',
-                    width: '100%',
-                    height: '50',
-                    lineColor: '#1ab394',
-                    fillColor: "transparent"
-                });
-
-                $("#sparkline3").sparkline([34, 22, 24, 41, 10, 18, 16, 8], {
-                    type: 'line',
-                    width: '100%',
-                    height: '50',
-                    lineColor: '#1C84C6',
-                    fillColor: "transparent"
-                });
-            };
-
-            var sparkResize;
-
-            $(window).resize(function (e) {
-                clearTimeout(sparkResize);
-                sparkResize = setTimeout(sparklineCharts, 500);
-            });
-
-            sparklineCharts();
-
-
+            }, 1300);
 
 
             var data1 = [
-                [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 20], [11, 10], [12, 13], [13, 4], [14, 7], [15, 8], [16, 12]
+                [0, 15],[1,8],[2,5],[3,10],[4,4],[5,16],[6,5],[7,11],[8,6],[9,11],[10,30],[11,10],[12,13]
             ];
+            
             var data2 = [
-                [0, 0], [1, 2], [2, 7], [3, 4], [4, 11], [5, 4], [6, 2], [7, 5], [8, 11], [9, 5], [10, 4], [11, 1], [12, 5], [13, 2], [14, 5], [15, 2], [16, 0]
+                [0,1],[1,0],[2,2],[3,0],[4,1],[5,3],[6,1],[7,5],[8,2],[9,3],[10,2],[11,1],[12,0]
             ];
-            $("#flot-dashboard5-chart").length && $.plot($("#flot-dashboard5-chart"), [
+            $("#flot-dashboard-chart").length && $.plot($("#flot-dashboard-chart"), [
                 data1, data2
             ],
-                {
-                    series: {
-                        lines: {
-                            show: false,
-                            fill: true
+                    {
+                        series: {
+                            lines: {
+                                show: false,
+                                fill: true
+                            },
+                            splines: {
+                                show: true,
+                                tension: 0.4,
+                                lineWidth: 1,
+                                fill: 0.4
+                            },
+                            points: {
+                                radius: 0,
+                                show: true
+                            },
+                            shadowSize: 2
                         },
-                        splines: {
-                            show: true,
-                            tension: 0.4,
-                            lineWidth: 1,
-                            fill: 0.4
+                        grid: {
+                            hoverable: true,
+                            clickable: true,
+                            tickColor: "#d5d5d5",
+                            borderWidth: 1,
+                            color: '#d5d5d5'
                         },
-                        points: {
-                            radius: 0,
-                            show: true
+                        colors: ["#1ab394", "#1C84C6"],
+                        xaxis:{
                         },
-                        shadowSize: 2
-                    },
-                    grid: {
-                        hoverable: true,
-                        clickable: true,
-
-                        borderWidth: 2,
-                        color: 'transparent'
-                    },
-                    colors: ["#1ab394", "#1C84C6"],
-                    xaxis: {
-                    },
-                    yaxis: {
-                    },
-                    tooltip: false
-                }
+                        yaxis: {
+                            ticks: 4
+                        },
+                        tooltip: false
+                    }
             );
+
+
+            var doughnutData = {
+                labels: ["App","Site","Web Services" ],
+                datasets: [{
+                    data: [70,20,10],
+                    backgroundColor: ["#a3e1d4","#dedede","#9CC3DA"]
+                }]
+            } ;
+
+
+            var doughnutOptions = {
+                responsive: false,
+                legend: {
+                    display: false
+                }
+            };
+
+
+            var ctx4 = document.getElementById("doughnutChart2").getContext("2d");
+            new Chart(ctx4, {type: 'doughnut', data: doughnutData, options:doughnutOptions});
 
         });
     </script>
-</body>
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+        ga('create', 'UA-4625583-2', 'webapplayers.com');
+        ga('send', 'pageview');
+
+    </script>
+</body>
 </html>
